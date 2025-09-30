@@ -211,16 +211,16 @@
       50% { background-position: 100% 50%; }
     }
 
-    /* Floating Animation */
+    /* Floating Animation - Disabled Rotation */
     .floating {
-      animation: floating 6s ease-in-out infinite;
+      animation: floatingSimple 6s ease-in-out infinite;
     }
 
-    @keyframes floating {
-      0% { transform: translate(0, 0px) rotate(0deg); }
-      33% { transform: translate(0, 15px) rotate(2deg); }
-      66% { transform: translate(0, -10px) rotate(-2deg); }
-      100% { transform: translate(0, 0px) rotate(0deg); }
+    @keyframes floatingSimple {
+      0% { transform: translate(0, 0px); }
+      33% { transform: translate(0, 15px); }
+      66% { transform: translate(0, -10px); }
+      100% { transform: translate(0, 0px); }
     }
 
     /* Mobile Phone Animation */
@@ -231,10 +231,10 @@
     }
 
     @keyframes phoneBounce {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      25% { transform: translateY(-10px) rotate(3deg); }
-      50% { transform: translateY(-5px) rotate(0deg); }
-      75% { transform: translateY(-15px) rotate(-3deg); }
+      0%, 100% { transform: translateY(0); }
+      25% { transform: translateY(-10px); }
+      50% { transform: translateY(-5px); }
+      75% { transform: translateY(-15px); }
     }
 
     /* Code Animation */
@@ -251,50 +251,50 @@
       }
     }
 
-    /* Advanced Flutter Animations */
+    /* Advanced Flutter Animations - No Rotation */
     @keyframes flutterMorph {
       0%, 100% {
-        transform: rotate(0deg) scale(1) skew(0deg) translateZ(0);
+        transform: scale(1) translateZ(0);
         border-radius: 20px;
         background: var(--gradient-1);
         box-shadow: 0 15px 35px rgba(37, 99, 235, 0.3);
       }
       25% {
-        transform: rotate(5deg) scale(1.1) skew(2deg) translateZ(20px);
-        border-radius: 50px;
+        transform: scale(1.05) translateZ(10px);
+        border-radius: 25px;
         background: var(--gradient-2);
-        box-shadow: 0 25px 50px rgba(124, 58, 237, 0.4);
+        box-shadow: 0 20px 40px rgba(124, 58, 237, 0.4);
       }
       50% {
-        transform: rotate(0deg) scale(1.2) skew(0deg) translateZ(40px);
-        border-radius: 10px;
+        transform: scale(1.08) translateZ(15px);
+        border-radius: 15px;
         background: var(--gradient-3);
-        box-shadow: 0 35px 70px rgba(5, 150, 105, 0.5);
+        box-shadow: 0 25px 50px rgba(5, 150, 105, 0.5);
       }
       75% {
-        transform: rotate(-5deg) scale(1.1) skew(-2deg) translateZ(20px);
-        border-radius: 30px;
+        transform: scale(1.05) translateZ(10px);
+        border-radius: 22px;
         background: var(--gradient-1);
-        box-shadow: 0 25px 50px rgba(37, 99, 235, 0.4);
+        box-shadow: 0 20px 40px rgba(37, 99, 235, 0.4);
       }
     }
 
     @keyframes liquidMorph {
       0%, 100% {
         clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%);
-        transform: rotateX(0deg) rotateY(0deg);
+        transform: scale(1);
       }
       25% {
         clip-path: polygon(0% 15%, 85% 0%, 100% 100%, 15% 100%, 0% 85%);
-        transform: rotateX(10deg) rotateY(5deg);
+        transform: scale(1.02);
       }
       50% {
         clip-path: polygon(15% 0%, 100% 15%, 85% 100%, 0% 85%, 0% 0%);
-        transform: rotateX(0deg) rotateY(10deg);
+        transform: scale(1.05);
       }
       75% {
         clip-path: polygon(0% 0%, 85% 15%, 100% 100%, 0% 100%, 0% 15%);
-        transform: rotateX(-10deg) rotateY(5deg);
+        transform: scale(1.02);
       }
     }
 
@@ -407,6 +407,188 @@
       }
     }
 
+    /* ========== UNIQUE ANIMATED ICONS ========== */
+    
+    /* Morphing Flutter Icon */
+    @keyframes flutterMorph {
+      0%, 100% {
+        transform: rotate(0deg) scale(1) skewX(0deg);
+        filter: hue-rotate(0deg) drop-shadow(0 0 20px rgba(6, 182, 212, 0.5));
+      }
+      25% {
+        transform: rotate(90deg) scale(1.3) skewX(15deg);
+        filter: hue-rotate(90deg) drop-shadow(0 0 30px rgba(37, 99, 235, 0.8));
+      }
+      50% {
+        transform: rotate(180deg) scale(0.8) skewX(0deg);
+        filter: hue-rotate(180deg) drop-shadow(0 0 40px rgba(124, 58, 237, 0.9));
+      }
+      75% {
+        transform: rotate(270deg) scale(1.1) skewX(-15deg);
+        filter: hue-rotate(270deg) drop-shadow(0 0 35px rgba(236, 72, 153, 0.7));
+      }
+    }
+
+    /* DNA Helix Animation */
+    @keyframes dnaHelix {
+      0% {
+        transform: rotateY(0deg) rotateX(0deg) translateZ(0px);
+        box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+      }
+      25% {
+        transform: rotateY(90deg) rotateX(15deg) translateZ(20px);
+        box-shadow: 0 0 30px rgba(37, 99, 235, 0.6);
+      }
+      50% {
+        transform: rotateY(180deg) rotateX(0deg) translateZ(40px);
+        box-shadow: 0 0 40px rgba(124, 58, 237, 0.8);
+      }
+      75% {
+        transform: rotateY(270deg) rotateX(-15deg) translateZ(20px);
+        box-shadow: 0 0 30px rgba(236, 72, 153, 0.6);
+      }
+      100% {
+        transform: rotateY(360deg) rotateX(0deg) translateZ(0px);
+        box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+      }
+    }
+
+    /* Plasma Orb Effect */
+    @keyframes plasmaOrb {
+      0%, 100% {
+        border-radius: 50% 40% 60% 30%;
+        transform: rotate(0deg) scale(1);
+        background: radial-gradient(circle at 30% 20%, rgba(6, 182, 212, 0.8), rgba(37, 99, 235, 0.6), rgba(124, 58, 237, 0.4));
+      }
+      25% {
+        border-radius: 30% 60% 40% 50%;
+        transform: rotate(90deg) scale(1.2);
+        background: radial-gradient(circle at 70% 80%, rgba(37, 99, 235, 0.8), rgba(124, 58, 237, 0.6), rgba(236, 72, 153, 0.4));
+      }
+      50% {
+        border-radius: 60% 30% 50% 40%;
+        transform: rotate(180deg) scale(0.9);
+        background: radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.8), rgba(236, 72, 153, 0.6), rgba(6, 182, 212, 0.4));
+      }
+      75% {
+        border-radius: 40% 50% 30% 60%;
+        transform: rotate(270deg) scale(1.1);
+        background: radial-gradient(circle at 20% 60%, rgba(236, 72, 153, 0.8), rgba(6, 182, 212, 0.6), rgba(37, 99, 235, 0.4));
+      }
+    }
+
+    /* Circuit Board Animation */
+    @keyframes circuitPulse {
+      0%, 100% {
+        box-shadow: 
+          0 0 5px rgba(6, 182, 212, 0.5),
+          0 0 10px rgba(6, 182, 212, 0.3),
+          0 0 15px rgba(6, 182, 212, 0.1),
+          inset 0 0 5px rgba(37, 99, 235, 0.2);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 
+          0 0 20px rgba(6, 182, 212, 0.8),
+          0 0 30px rgba(37, 99, 235, 0.6),
+          0 0 40px rgba(124, 58, 237, 0.4),
+          inset 0 0 10px rgba(6, 182, 212, 0.3);
+        transform: scale(1.05);
+      }
+    }
+
+    /* Quantum Entanglement */
+    @keyframes quantumEntangle {
+      0% {
+        transform: rotate(0deg) translateX(0px) rotate(0deg);
+        opacity: 1;
+      }
+      25% {
+        transform: rotate(90deg) translateX(30px) rotate(-90deg);
+        opacity: 0.7;
+      }
+      50% {
+        transform: rotate(180deg) translateX(0px) rotate(-180deg);
+        opacity: 0.5;
+      }
+      75% {
+        transform: rotate(270deg) translateX(-30px) rotate(-270deg);
+        opacity: 0.7;
+      }
+      100% {
+        transform: rotate(360deg) translateX(0px) rotate(-360deg);
+        opacity: 1;
+      }
+    }
+
+    /* Hologram Glitch */
+    @keyframes hologramGlitch {
+      0%, 90%, 100% {
+        transform: translate(0);
+        filter: hue-rotate(0deg);
+      }
+      10% {
+        transform: translate(-2px, 1px) skew(-5deg);
+        filter: hue-rotate(90deg);
+      }
+      20% {
+        transform: translate(1px, -1px) skew(5deg);
+        filter: hue-rotate(180deg);
+      }
+      30% {
+        transform: translate(-1px, 2px) skew(-3deg);
+        filter: hue-rotate(270deg);
+      }
+      40% {
+        transform: translate(2px, -2px) skew(3deg);
+        filter: hue-rotate(360deg);
+      }
+    }
+
+    /* Energy Burst */
+    @keyframes energyBurst {
+      0% {
+        transform: scale(1) rotate(0deg);
+        box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7);
+      }
+      50% {
+        transform: scale(1.3) rotate(180deg);
+        box-shadow: 0 0 0 20px rgba(6, 182, 212, 0);
+      }
+      100% {
+        transform: scale(1) rotate(360deg);
+        box-shadow: 0 0 0 0 rgba(6, 182, 212, 0);
+      }
+    }
+
+    /* Crystalline Formation */
+    @keyframes crystalline {
+      0%, 100% {
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        transform: rotate(0deg) scale(1);
+      }
+      16.66% {
+        clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%, 0% 0%);
+        transform: rotate(60deg) scale(1.1);
+      }
+      33.33% {
+        clip-path: polygon(0% 25%, 75% 0%, 100% 50%, 75% 100%, 0% 75%, 0% 25%);
+        transform: rotate(120deg) scale(0.9);
+      }
+      50% {
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        transform: rotate(180deg) scale(1.2);
+      }
+      66.66% {
+        clip-path: polygon(25% 0%, 100% 25%, 100% 100%, 0% 100%, 0% 50%, 25% 0%);
+        transform: rotate(240deg) scale(0.8);
+      }
+      83.33% {
+        clip-path: polygon(0% 0%, 75% 25%, 100% 75%, 25% 100%, 0% 50%, 0% 0%);
+        transform: rotate(300deg) scale(1.1);
+      }
+    }
+
     /* Section Styles */
     .section {
       padding: 80px 0;
@@ -433,13 +615,17 @@
       padding: 30px;
       text-align: center;
       margin-bottom: 30px;
-      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: all 0.3s ease;
       transform: translateY(50px);
       opacity: 0;
       box-shadow: 0 8px 32px rgba(37, 99, 235, 0.1);
       position: relative;
       overflow: hidden;
-      will-change: transform, opacity;
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
     }
     
     /* Mobile-optimized animations */
@@ -458,7 +644,6 @@
       .project-card:hover,
       .contact-card:hover {
         transform: translateY(-8px) scale(1.03);
-        animation: none;
       }
       
       .btn-custom:hover {
@@ -466,9 +651,24 @@
         animation: none;
       }
       
-      .skill-card.flutter-morph {
-        animation: quantumFloat 8s ease-in-out infinite;
+      /* Simplified animations for mobile */
+      .levitate-card {
+        animation: simpleLevitate 4s ease-in-out infinite;
       }
+      
+      .skill-aura {
+        opacity: 0.2;
+      }
+      
+      .icon-orbit-dance::before,
+      .icon-orbit-dance::after {
+        display: none;
+      }
+    }
+    
+    @keyframes simpleLevitate {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
     }
 
     .skill-card::before {
@@ -489,15 +689,18 @@
     }
 
     .skill-card.flutter-morph {
-      animation: flutterMorph 6s ease-in-out infinite, morphingBorder 4s ease-in-out infinite;
+      /* Animation disabled for performance */
+      animation: none;
     }
     
     .skill-card.liquid-morph {
-      animation: liquidMorph 8s ease-in-out infinite;
+      /* Animation disabled for performance */
+      animation: none;
     }
     
     .skill-card.quantum-float {
-      animation: quantumFloat 10s ease-in-out infinite;
+      /* Animation disabled for performance */
+      animation: none;
     }
     
     /* Enhanced hero text animations */
@@ -511,6 +714,133 @@
     
     .magnetic-element:hover {
       animation: magneticPull 0.6s ease-out;
+    }
+    
+    /* ========== UNIQUE ANIMATED ICON CLASSES ========== */
+    
+    .icon-flutter-morph {
+      /* Animation disabled for performance */
+      animation: none;
+      transform-style: preserve-3d;
+    }
+    
+    .icon-dna-helix {
+      animation: dnaHelix 8s linear infinite;
+      transform-style: preserve-3d;
+    }
+    
+    .icon-plasma-orb {
+      animation: plasmaOrb 5s ease-in-out infinite;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.8), rgba(37, 99, 235, 0.4));
+    }
+    
+    .icon-circuit-pulse {
+      animation: circuitPulse 2s ease-in-out infinite;
+      position: relative;
+    }
+    
+    .icon-circuit-pulse::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: linear-gradient(45deg, 
+        rgba(6, 182, 212, 0.3) 0%,
+        rgba(37, 99, 235, 0.3) 25%,
+        rgba(124, 58, 237, 0.3) 50%,
+        rgba(236, 72, 153, 0.3) 75%,
+        rgba(6, 182, 212, 0.3) 100%);
+      border-radius: 50%;
+      animation: waveAnimation 3s linear infinite;
+      z-index: -1;
+    }
+    
+    .icon-quantum-entangle {
+      animation: quantumEntangle 10s ease-in-out infinite;
+      transform-origin: center;
+    }
+    
+    .icon-quantum-entangle::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 2px dashed rgba(6, 182, 212, 0.5);
+      border-radius: 50%;
+      animation: quantumEntangle 10s ease-in-out infinite reverse;
+    }
+    
+    .icon-hologram-glitch {
+      animation: hologramGlitch 4s ease-in-out infinite;
+      position: relative;
+    }
+    
+    .icon-hologram-glitch::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: inherit;
+      opacity: 0.3;
+      animation: hologramGlitch 4s ease-in-out infinite 0.1s;
+    }
+    
+    .icon-energy-burst {
+      animation: energyBurst 3s ease-in-out infinite;
+      position: relative;
+    }
+    
+    .icon-crystalline {
+      animation: crystalline 12s ease-in-out infinite;
+      background: linear-gradient(45deg, 
+        rgba(6, 182, 212, 0.8),
+        rgba(37, 99, 235, 0.6),
+        rgba(124, 58, 237, 0.8));
+    }
+    
+    /* ========== CONSTELLATION NETWORK ========== */
+    
+    .constellation-network {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .constellation-dot {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(6, 182, 212, 0.6);
+      border-radius: 50%;
+      animation: constellationPulse 3s ease-in-out infinite;
+    }
+    
+    .constellation-line {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent, 
+        rgba(6, 182, 212, 0.4), 
+        transparent);
+      animation: constellationFlow 5s ease-in-out infinite;
+    }
+    
+    @keyframes constellationPulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+    
+    @keyframes constellationFlow {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
     }
 
     .skill-card.animate {
@@ -1193,6 +1523,84 @@
       }
     }
     
+    /* ========== ANIMATED TECH SYMBOLS ========== */
+    
+    .tech-symbol {
+      position: absolute;
+      font-family: 'Courier New', monospace;
+      color: rgba(6, 182, 212, 0.4);
+      animation: techSymbolFloat 20s linear infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    @keyframes techSymbolFloat {
+      0% {
+        transform: translateY(100vh) rotate(0deg) scale(0.5);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+        transform: scale(1);
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100px) rotate(720deg) scale(0.3);
+        opacity: 0;
+      }
+    }
+    
+    .particle-trail {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(6, 182, 212, 0.8);
+      border-radius: 50%;
+      animation: particleTrail 3s ease-out infinite;
+    }
+    
+    @keyframes particleTrail {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0) translateY(-50px);
+      }
+    }
+    
+    /* ========== DNA STRAND BACKGROUND ========== */
+    
+    .dna-strand {
+      position: fixed;
+      right: -50px;
+      top: 0;
+      width: 100px;
+      height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.1;
+    }
+    
+    .dna-base {
+      position: absolute;
+      width: 30px;
+      height: 4px;
+      background: linear-gradient(90deg, 
+        rgba(6, 182, 212, 0.6), 
+        rgba(37, 99, 235, 0.4));
+      animation: dnaRotate 8s linear infinite;
+    }
+    
+    @keyframes dnaRotate {
+      0% { transform: rotateY(0deg) translateZ(20px); }
+      50% { transform: rotateY(180deg) translateZ(-20px); }
+      100% { transform: rotateY(360deg) translateZ(20px); }
+    }
+    
     /* Interactive Cursor Effects */
     .cursor-trail {
       position: fixed;
@@ -1250,6 +1658,72 @@
       100% { transform: rotate(360deg); }
     }
     
+    /* ========== CHOREOGRAPHED ANIMATION SEQUENCES ========== */
+    
+    .stagger-animation {
+      animation-delay: calc(var(--stagger-delay, 0) * 0.1s);
+    }
+    
+    .cascade-effect {
+      animation: cascadeIn 1s ease-out;
+      animation-fill-mode: both;
+      animation-delay: calc(var(--cascade-delay, 0) * 0.15s);
+    }
+    
+    @keyframes cascadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+        filter: blur(10px);
+      }
+      50% {
+        opacity: 0.7;
+        transform: translateY(-10px);
+        filter: blur(5px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0px);
+      }
+    }
+    
+    .wave-animation {
+      animation: waveRipple 2s ease-in-out infinite;
+      animation-delay: calc(var(--wave-delay, 0) * 0.2s);
+    }
+    
+    @keyframes waveRipple {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(-20px) scale(1.05);
+        opacity: 0.8;
+      }
+    }
+    
+    .spiral-entrance {
+      animation: spiralIn 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      animation-fill-mode: both;
+    }
+    
+    @keyframes spiralIn {
+      0% {
+        opacity: 0;
+        transform: scale(0) translateY(100px);
+      }
+      50% {
+        opacity: 0.7;
+        transform: scale(0.7) translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: rotate(0deg) scale(1) translateY(0);
+      }
+    }
+    
     /* Performance Optimizations */
     * {
       backface-visibility: hidden;
@@ -1259,6 +1733,34 @@
     .gpu-accelerated {
       transform: translateZ(0);
       will-change: transform;
+    }
+    
+    /* ========== GLASSMORPHISM & NEON EFFECTS ========== */
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 
+        0 8px 32px 0 rgba(37, 99, 235, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    .neon-border {
+      border: 2px solid transparent;
+      background: linear-gradient(45deg, var(--card-bg), var(--card-bg)) padding-box,
+                  linear-gradient(45deg, rgba(6, 182, 212, 0.8), rgba(37, 99, 235, 0.8), rgba(124, 58, 237, 0.8)) border-box;
+      animation: neonPulse 3s ease-in-out infinite;
+    }
+    
+    .floating-orb {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(6, 182, 212, 0.3), transparent 70%);
+      animation: quantumFloat 15s ease-in-out infinite;
+      pointer-events: none;
     }
     
     /* Scroll-triggered Animations */
@@ -1305,6 +1807,20 @@
     <div class="parallax-layer parallax-bg-2"></div>
   </div>
 
+  <!-- Floating Orbs -->
+  <div class="floating-orb" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
+  <div class="floating-orb" style="top: 60%; right: 8%; animation-delay: 3s;"></div>
+  <div class="floating-orb" style="bottom: 20%; left: 15%; animation-delay: 6s;"></div>
+
+  <!-- Constellation Network -->
+  <div class="constellation-network" id="constellationNetwork"></div>
+
+  <!-- DNA Strand -->
+  <div class="dna-strand" id="dnaStrand"></div>
+
+  <!-- Tech Symbols Container -->
+  <div id="techSymbolsContainer"></div>
+
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg">
     <div class="container">
@@ -1337,10 +1853,10 @@
       <div class="matrix-container" id="matrixContainer"></div>
       
       <div class="hero-content">
-        <h1 class="cyberpunk magnetic-element">Hi, I'm <span class="floating holographic-text">Rajesh S</span></h1>
-        <h2 id="typing-text" class="code-animation holographic-text magnetic-element">Flutter & App Developer</h2>
-        <div class="typing-text magnetic-element">
-          <i class="fas fa-mobile-alt mobile-demo"></i> <span class="holographic-text">Building Cross-Platform Mobile Apps</span>
+        <h1 class="cyberpunk magnetic-element spiral-entrance">Hi, I'm <span class="floating holographic-text icon-hologram-glitch">Rajesh S</span></h1>
+        <h2 id="typing-text" class="code-animation holographic-text magnetic-element cascade-effect" style="--cascade-delay: 1;">Flutter & App Developer</h2>
+        <div class="typing-text magnetic-element cascade-effect" style="--cascade-delay: 2;">
+          <i class="fas fa-mobile-alt mobile-demo icon-flutter-morph"></i> <span class="holographic-text">Building Cross-Platform Mobile Apps</span>
         </div>
         
         <!-- Loading Animation -->
@@ -1372,11 +1888,11 @@
       <h2 class="section-title">Technical Skills</h2>
       <div class="row">
         <div class="col-md-4">
-          <div class="skill-card flutter-morph dynamic-glow fade-in-up gpu-accelerated">
-            <div class="skill-icon magnetic-element">
+          <div class="skill-card flutter-morph glass-card neon-border cascade-effect" style="--cascade-delay: 1;">
+            <div class="skill-icon magnetic-element icon-flutter-morph">
               <i class="fab fa-flutter"></i>
             </div>
-            <h4><i class="fas fa-mobile-alt"></i> <span class="holographic-text">Mobile Development</span></h4>
+            <h4><i class="fas fa-mobile-alt icon-plasma-orb"></i> <span class="holographic-text">Mobile Development</span></h4>
             <p>Flutter, Dart, Firebase (Auth, Firestore, Storage), REST API, Provider, Bloc, Push Notifications</p>
             <div class="skill-progress">
               <div class="skill-progress-bar" data-width="90%"></div>
@@ -1385,12 +1901,12 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="skill-card liquid-morph dynamic-glow fade-in-up gpu-accelerated">
-            <div class="skill-icon magnetic-element">
+          <div class="skill-card liquid-morph glass-card neon-border cascade-effect" style="--cascade-delay: 2;">
+            <div class="skill-icon magnetic-element icon-dna-helix">
               <i class="fas fa-server"></i>
             </div>
-            <h4>Backend Development</h4>
-            <p>PHP, MySQL, API development, JWT Auth, File Uploads, Database Design</p>
+            <h4><i class="fas fa-database icon-circuit-pulse"></i> <i class="fas fa-server icon-data-stream"></i> <i class="fab fa-php icon-pulse-ring"></i> Backend Development</h4>
+            <p><i class="fas fa-code"></i> PHP, <i class="fas fa-database"></i> MySQL, <i class="fas fa-plug"></i> API development, <i class="fas fa-shield-alt"></i> JWT Auth, <i class="fas fa-cloud-upload-alt"></i> File Uploads, <i class="fas fa-project-diagram"></i> Database Design</p>
             <div class="skill-progress">
               <div class="skill-progress-bar" data-width="85%"></div>
             </div>
@@ -1398,11 +1914,11 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="skill-card quantum-float dynamic-glow fade-in-up gpu-accelerated">
-            <div class="skill-icon magnetic-element">
+          <div class="skill-card quantum-float glass-card neon-border cascade-effect" style="--cascade-delay: 3;">
+            <div class="skill-icon magnetic-element icon-quantum-entangle">
               <i class="fas fa-tools"></i>
             </div>
-            <h4>Development Tools</h4>
+            <h4><i class="fas fa-cog icon-energy-burst"></i> Development Tools</h4>
             <p>Git, GitHub, VS Code, Android Studio, Xcode, Postman, Figma</p>
             <div class="skill-progress">
               <div class="skill-progress-bar" data-width="88%"></div>
@@ -1411,11 +1927,11 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="skill-card flutter-morph dynamic-glow fade-in-left gpu-accelerated">
-            <div class="skill-icon magnetic-element">
+          <div class="skill-card flutter-morph glass-card neon-border wave-animation" style="--wave-delay: 1;">
+            <div class="skill-icon magnetic-element icon-hologram-glitch">
               <i class="fas fa-cloud-upload-alt"></i>
             </div>
-            <h4>Deployment & CI/CD</h4>
+            <h4><i class="fas fa-rocket icon-energy-burst"></i> Deployment & CI/CD</h4>
             <p>Play Store, App Store, CI/CD basics, Version Control</p>
             <div class="skill-progress">
               <div class="skill-progress-bar" data-width="80%"></div>
@@ -1424,12 +1940,12 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="skill-card liquid-morph dynamic-glow fade-in-left gpu-accelerated">
-            <div class="skill-icon magnetic-element">
+          <div class="skill-card liquid-morph glass-card neon-border wave-animation" style="--wave-delay: 2;">
+            <div class="skill-icon magnetic-element icon-crystalline">
               <i class="fab fa-html5"></i>
             </div>
-            <h4>Web Technologies</h4>
-            <p>HTML, CSS, JavaScript, Bootstrap, jQuery, Responsive Design</p>
+            <h4><i class="fas fa-code icon-circuit-pulse"></i> <i class="fab fa-html5 icon-bracket-dance"></i> <i class="fab fa-css3-alt icon-data-stream"></i> <i class="fab fa-js-square icon-pulse-ring"></i> Web Technologies</h4>
+            <p><i class="fab fa-html5"></i> HTML, <i class="fab fa-css3-alt"></i> CSS, <i class="fab fa-js-square"></i> JavaScript, <i class="fab fa-bootstrap"></i> Bootstrap, <i class="fas fa-dollar-sign"></i> jQuery, <i class="fas fa-mobile-alt"></i> Responsive Design</p>
             <div class="skill-progress">
               <div class="skill-progress-bar" data-width="82%"></div>
             </div>
@@ -1437,11 +1953,11 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="skill-card quantum-float dynamic-glow fade-in-right gpu-accelerated">
-            <div class="skill-icon magnetic-element">
+          <div class="skill-card quantum-float glass-card neon-border wave-animation" style="--wave-delay: 3;">
+            <div class="skill-icon magnetic-element icon-dna-helix">
               <i class="fas fa-brain"></i>
             </div>
-            <h4>Problem Solving</h4>
+            <h4><i class="fas fa-lightbulb icon-plasma-orb"></i> Problem Solving</h4>
             <p>Algorithm Design, Debugging, Performance Optimization, Code Review</p>
             <div class="skill-progress">
               <div class="skill-progress-bar" data-width="87%"></div>
@@ -1495,8 +2011,8 @@
       <h2 class="section-title">Featured Projects</h2>
       <div class="row">
         <div class="col-md-6">
-          <div class="project-card dynamic-glow fade-in-left gpu-accelerated">
-            <h4><i class="fas fa-clock magnetic-element"></i> Cloud TNA App</h4>
+          <div class="project-card glass-card neon-border spiral-entrance">
+            <h4><i class="fas fa-clock magnetic-element icon-quantum-entangle"></i> Cloud TNA App</h4>
             <p class="text-muted">2025</p>
             <p>ERP Time & Action tracking app deployed on <strong>Play Store & App Store</strong>. 
             Complete attendance management system with real-time synchronization and offline capabilities.</p>
@@ -1522,8 +2038,8 @@
         </div>
         
         <div class="col-md-6">
-          <div class="project-card dynamic-glow fade-in-right gpu-accelerated">
-            <h4><i class="fas fa-user-check magnetic-element"></i> Cloudzoo ERP Attendance App</h4>
+          <div class="project-card glass-card neon-border spiral-entrance">
+            <h4><i class="fas fa-user-check magnetic-element icon-dna-helix"></i> Cloudzoo ERP Attendance App</h4>
             <p class="text-muted">2025</p>
             <p>Comprehensive attendance & leave tracking system with Flutter + Firebase backend. 
             Features include biometric authentication, leave management, and real-time reporting.</p>
@@ -1819,53 +2335,37 @@
       });
     }
 
-    // Enhanced Particle System
+    // Simplified Particle System for better performance
     function createAdvancedParticles() {
       const particlesContainer = document.getElementById('particles');
-      const particleCount = isMobile ? 15 : 40;
-      const geometricShapes = ['circle', 'triangle', 'square'];
+      const particleCount = isMobile ? 8 : 20; // Reduced particle count
       
       const appIcons = [
-        'fab fa-flutter', 'fab fa-android', 'fab fa-apple', 'fas fa-mobile-alt',
-        'fab fa-firebase', 'fas fa-code', 'fas fa-database', 'fab fa-github',
-        'fas fa-cloud', 'fas fa-cog', 'fas fa-rocket', 'fas fa-bolt',
-        'fab fa-js-square', 'fab fa-css3-alt', 'fab fa-html5'
+        'fab fa-flutter', 'fab fa-android', 'fas fa-mobile-alt',
+        'fab fa-firebase', 'fas fa-code', 'fab fa-github'
       ];
 
-      // Create glowing particles
+      // Create simple particles
       for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
-        const isGlow = Math.random() > 0.7;
-        const isGeometric = Math.random() > 0.8;
-        
-        if (isGlow) {
-          particle.className = 'particle glow';
-        } else if (isGeometric) {
-          particle.className = 'particle geometric';
-        } else {
-          particle.className = 'particle';
-        }
+        particle.className = 'particle';
         
         particle.style.left = Math.random() * 100 + '%';
-        particle.style.width = particle.style.height = Math.random() * 8 + 3 + 'px';
-        particle.style.animationDuration = (Math.random() * 25 + 15) + 's';
-        particle.style.animationDelay = Math.random() * 25 + 's';
-        
-        if (isGeometric) {
-          particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
-        }
+        particle.style.width = particle.style.height = Math.random() * 6 + 2 + 'px';
+        particle.style.animationDuration = (Math.random() * 20 + 15) + 's';
+        particle.style.animationDelay = Math.random() * 20 + 's';
         
         particlesContainer.appendChild(particle);
       }
 
-      // Create app icon particles
-      const iconCount = isMobile ? 4 : 10;
+      // Create fewer app icon particles
+      const iconCount = isMobile ? 2 : 5;
       for (let i = 0; i < iconCount; i++) {
         const appIcon = document.createElement('i');
         appIcon.className = 'app-icon ' + appIcons[Math.floor(Math.random() * appIcons.length)];
         appIcon.style.left = Math.random() * 100 + '%';
-        appIcon.style.animationDuration = (Math.random() * 18 + 12) + 's';
-        appIcon.style.animationDelay = Math.random() * 18 + 's';
+        appIcon.style.animationDuration = (Math.random() * 15 + 10) + 's';
+        appIcon.style.animationDelay = Math.random() * 15 + 's';
         particlesContainer.appendChild(appIcon);
       }
     }
@@ -2014,6 +2514,237 @@
       });
     }
 
+    // ========== CONSTELLATION NETWORK SYSTEM ==========
+    function createConstellationNetwork() {
+      const network = document.getElementById('constellationNetwork');
+      if (!network) return;
+      
+      const dots = [];
+      const dotCount = isMobile ? 15 : 30;
+      
+      // Create constellation dots
+      for (let i = 0; i < dotCount; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'constellation-dot';
+        dot.style.left = Math.random() * 100 + '%';
+        dot.style.top = Math.random() * 100 + '%';
+        dot.style.animationDelay = Math.random() * 3 + 's';
+        network.appendChild(dot);
+        
+        dots.push({
+          element: dot,
+          x: parseFloat(dot.style.left),
+          y: parseFloat(dot.style.top)
+        });
+      }
+      
+      // Create connecting lines
+      for (let i = 0; i < dots.length; i++) {
+        for (let j = i + 1; j < dots.length; j++) {
+          const dot1 = dots[i];
+          const dot2 = dots[j];
+          const distance = Math.sqrt(
+            Math.pow(dot2.x - dot1.x, 2) + Math.pow(dot2.y - dot1.y, 2)
+          );
+          
+          if (distance < 20) { // Only connect nearby dots
+            const line = document.createElement('div');
+            line.className = 'constellation-line';
+            
+            const angle = Math.atan2(dot2.y - dot1.y, dot2.x - dot1.x);
+            const length = distance * window.innerWidth / 100;
+            
+            line.style.width = length + 'px';
+            line.style.left = dot1.x + '%';
+            line.style.top = dot1.y + '%';
+            line.style.transform = `rotate(${angle}rad)`;
+            line.style.transformOrigin = '0 0';
+            line.style.animationDelay = Math.random() * 5 + 's';
+            
+            network.appendChild(line);
+          }
+        }
+      }
+    }
+
+    // ========== DNA STRAND ANIMATION ==========
+    function createDNAStrand() {
+      const dnaStrand = document.getElementById('dnaStrand');
+      if (!dnaStrand || isMobile) return;
+      
+      const baseCount = 20;
+      
+      for (let i = 0; i < baseCount; i++) {
+        const base = document.createElement('div');
+        base.className = 'dna-base';
+        base.style.top = (i * 5) + '%';
+        base.style.left = '35px';
+        base.style.animationDelay = (i * 0.2) + 's';
+        
+        // Create complementary base
+        const compBase = document.createElement('div');
+        compBase.className = 'dna-base';
+        compBase.style.top = (i * 5) + '%';
+        compBase.style.right = '35px';
+        compBase.style.animationDelay = (i * 0.2 + 0.1) + 's';
+        
+        dnaStrand.appendChild(base);
+        dnaStrand.appendChild(compBase);
+      }
+    }
+
+    // ========== TECH SYMBOLS ANIMATION ==========
+    function createTechSymbols() {
+      const container = document.getElementById('techSymbolsContainer');
+      if (!container) return;
+      
+      const symbols = [
+        '{ }', '< />', '[ ]', '( )', '&&', '||', '=>', '++', '--', '!=', 
+        '===', '...', '++i', 'fn', 'var', 'let', 'const', 'async', 'await',
+        'Widget', 'State', 'Build', 'void', 'class', 'extends', 'import',
+        '@override', 'final', 'String', 'int', 'double', 'bool', 'List',
+        'Map', 'Future', 'Stream', 'JSON', 'API', 'HTTP', 'CRUD', 'JWT',
+        'SQL', 'NoSQL', 'REST', 'GraphQL', 'Git', 'CI/CD', 'Docker'
+      ];
+      
+      let symbolInterval = setInterval(() => {
+        if (document.querySelectorAll('.tech-symbol').length < (isMobile ? 8 : 15)) {
+          const symbol = document.createElement('div');
+          symbol.className = 'tech-symbol';
+          symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+          symbol.style.left = Math.random() * 100 + '%';
+          symbol.style.fontSize = (Math.random() * 10 + 12) + 'px';
+          symbol.style.animationDuration = (Math.random() * 15 + 10) + 's';
+          container.appendChild(symbol);
+          
+          setTimeout(() => {
+            if (symbol.parentNode) {
+              symbol.parentNode.removeChild(symbol);
+            }
+          }, 25000);
+        }
+      }, isMobile ? 2000 : 1000);
+      
+      // Pause when page is not visible
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          clearInterval(symbolInterval);
+        } else if (!symbolInterval) {
+          symbolInterval = setInterval(() => {
+            // Tech symbols logic (same as above)
+          }, isMobile ? 2000 : 1000);
+        }
+      });
+    }
+
+    // ========== PARTICLE TRAIL SYSTEM ==========
+    function createParticleTrails() {
+      if (isMobile) return;
+      
+      document.addEventListener('mousemove', (e) => {
+        if (Math.random() > 0.9) { // Only create trails occasionally
+          const trail = document.createElement('div');
+          trail.className = 'particle-trail';
+          trail.style.left = e.clientX + 'px';
+          trail.style.top = e.clientY + 'px';
+          
+          document.body.appendChild(trail);
+          
+          setTimeout(() => {
+            if (trail.parentNode) {
+              trail.parentNode.removeChild(trail);
+            }
+          }, 3000);
+        }
+      });
+    }
+
+    // ========== ENHANCED SKILL PROGRESS ANIMATION ==========
+    function animateSkillProgress() {
+      const progressBars = document.querySelectorAll('.skill-progress-bar');
+      
+      progressBars.forEach((bar, index) => {
+        const card = bar.closest('.skill-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !bar.style.width) {
+              const width = bar.getAttribute('data-width');
+              
+              // Add staggered delay
+              setTimeout(() => {
+                bar.style.width = width;
+                bar.style.background = `linear-gradient(90deg, 
+                  rgba(6, 182, 212, 0.8), 
+                  rgba(37, 99, 235, 0.6), 
+                  rgba(124, 58, 237, 0.4))`;
+                
+                // Add particle effect on progress completion
+                setTimeout(() => {
+                  if (!isMobile) {
+                    createProgressParticles(bar);
+                  }
+                }, 1000);
+              }, index * 200);
+            }
+          });
+        });
+        
+        observer.observe(card);
+      });
+    }
+
+    function createProgressParticles(progressBar) {
+      const rect = progressBar.getBoundingClientRect();
+      
+      for (let i = 0; i < 5; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle-trail';
+        particle.style.position = 'fixed';
+        particle.style.left = rect.right + 'px';
+        particle.style.top = (rect.top + rect.height / 2) + 'px';
+        particle.style.background = 'rgba(6, 182, 212, 0.8)';
+        
+        document.body.appendChild(particle);
+        
+        setTimeout(() => {
+          if (particle.parentNode) {
+            particle.parentNode.removeChild(particle);
+          }
+        }, 2000);
+      }
+    }
+
+    // ========== CHOREOGRAPHED SECTION ANIMATIONS ==========
+    function initChoreographedAnimations() {
+      const sections = document.querySelectorAll('section');
+      
+      sections.forEach((section, sectionIndex) => {
+        const elements = section.querySelectorAll('.cascade-effect, .wave-animation, .spiral-entrance');
+        
+        const sectionObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // Trigger cascade animations
+              const cascadeElements = entry.target.querySelectorAll('.cascade-effect');
+              cascadeElements.forEach((el, index) => {
+                el.style.setProperty('--cascade-delay', index);
+                el.classList.add('animate');
+              });
+              
+              // Trigger wave animations
+              const waveElements = entry.target.querySelectorAll('.wave-animation');
+              waveElements.forEach((el, index) => {
+                el.style.setProperty('--wave-delay', index);
+              });
+            }
+          });
+        }, { threshold: 0.2 });
+        
+        sectionObserver.observe(section);
+      });
+    }
+
     // Initialize Everything
     document.addEventListener('DOMContentLoaded', () => {
       // Start typing animation
@@ -2033,6 +2764,14 @@
       addAdvanced3DInteractions();
       optimizeForMobile();
       enhanceNavbar();
+      
+      // Initialize new spectacular effects
+      createConstellationNetwork();
+      createDNAStrand();
+      createTechSymbols();
+      createParticleTrails();
+      animateSkillProgress();
+      initChoreographedAnimations();
       
       // Smooth scrolling for navigation links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
