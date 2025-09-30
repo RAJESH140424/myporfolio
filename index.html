@@ -3,108 +3,2087 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rajesh S - Portfolio</title>
+  <title>Rajesh S - Flutter & App Developer Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1e40af;
+      --accent-color: #06b6d4;
+      --gold-accent: #f59e0b;
+      --text-light: #ffffff;
+      --text-dark: #0f172a;
+      --card-bg: rgba(15, 23, 42, 0.8);
+      --card-border: rgba(37, 99, 235, 0.3);
+      --gradient-1: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
+      --gradient-2: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%);
+      --gradient-3: linear-gradient(135deg, #059669 0%, #10b981 50%, #06b6d4 100%);
+      --gradient-bg: linear-gradient(-45deg, #0f172a, #1e293b, #374151, #1f2937);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      color: #fff;
-      font-family: 'Courier New', Courier, monospace;
+      font-family: 'Poppins', sans-serif;
+      background: var(--gradient-bg);
+      background-size: 400% 400%;
+      animation: gradientBG 20s ease infinite;
+      color: var(--text-light);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
-    .nav-link {
-      color: #38bdf8;
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-    .nav-link:hover {
-      color: #60a5fa;
+
+    /* Navbar Styles */
+    .navbar {
+      background: rgba(15, 23, 42, 0.95) !important;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--card-border);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
     }
-    .highlight {
-      color: #38bdf8;
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--text-light) !important;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .navbar-nav .nav-link {
+      color: var(--text-light) !important;
+      margin: 0 10px;
+      font-weight: 500;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: var(--accent-color) !important;
+      transform: translateY(-2px);
+    }
+
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background: var(--accent-color);
+      transition: all 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 80px;
+      position: relative;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: slideUp 1s ease 0.5s forwards;
+    }
+
+    .hero-content h2 {
+      font-size: 2.5rem;
+      background: var(--gradient-3);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 30px;
+      opacity: 0;
+      animation: slideUp 1s ease 0.8s forwards;
+    }
+
+    .typing-text {
+      font-size: 1.5rem;
+      color: var(--accent-color);
+      margin-bottom: 30px;
+      opacity: 0;
+      animation: slideUp 1s ease 1.1s forwards;
+    }
+
+    .hero-summary {
       font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      opacity: 0;
+      animation: slideUp 1s ease 1.4s forwards;
     }
-    .contact-info {
-      font-size: 1rem;
+
+    .cta-buttons {
+      opacity: 0;
+      animation: slideUp 1s ease 1.7s forwards;
     }
-    .card {
-      background-color: #1e293b;
+
+    .btn-custom {
+      padding: 15px 30px;
+      margin: 10px;
       border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary-custom {
+      background: var(--gradient-1);
+      color: white;
+    }
+
+    .btn-outline-custom {
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      background: transparent;
+    }
+
+    .btn-custom:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 
+        0 15px 35px rgba(37, 99, 235, 0.4),
+        0 0 30px rgba(6, 182, 212, 0.3),
+        inset 0 0 20px rgba(6, 182, 212, 0.1);
+      animation: holographicPulse 0.8s ease-in-out;
+    }
+
+    @keyframes holographicPulse {
+      0%, 100% {
+        filter: hue-rotate(0deg) brightness(1);
+      }
+      25% {
+        filter: hue-rotate(90deg) brightness(1.2);
+      }
+      50% {
+        filter: hue-rotate(180deg) brightness(1.4);
+      }
+      75% {
+        filter: hue-rotate(270deg) brightness(1.2);
+      }
+    }
+
+    /* Holographic Text Effect */
+    .holographic-text {
+      background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5, #ffbe0b);
+      background-size: 300% 300%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: holographicShift 3s ease-in-out infinite;
+    }
+
+    @keyframes holographicShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Floating Animation */
+    .floating {
+      animation: floating 6s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0% { transform: translate(0, 0px) rotate(0deg); }
+      33% { transform: translate(0, 15px) rotate(2deg); }
+      66% { transform: translate(0, -10px) rotate(-2deg); }
+      100% { transform: translate(0, 0px) rotate(0deg); }
+    }
+
+    /* Mobile Phone Animation */
+    .mobile-demo {
+      position: relative;
+      display: inline-block;
+      animation: phoneBounce 4s ease-in-out infinite;
+    }
+
+    @keyframes phoneBounce {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-10px) rotate(3deg); }
+      50% { transform: translateY(-5px) rotate(0deg); }
+      75% { transform: translateY(-15px) rotate(-3deg); }
+    }
+
+    /* Code Animation */
+    .code-animation {
+      animation: codeGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes codeGlow {
+      0% {
+        text-shadow: 0 0 5px rgba(6, 182, 212, 0.3);
+      }
+      100% {
+        text-shadow: 0 0 20px rgba(6, 182, 212, 0.8), 0 0 30px rgba(37, 99, 235, 0.5);
+      }
+    }
+
+    /* Advanced Flutter Animations */
+    @keyframes flutterMorph {
+      0%, 100% {
+        transform: rotate(0deg) scale(1) skew(0deg) translateZ(0);
+        border-radius: 20px;
+        background: var(--gradient-1);
+        box-shadow: 0 15px 35px rgba(37, 99, 235, 0.3);
+      }
+      25% {
+        transform: rotate(5deg) scale(1.1) skew(2deg) translateZ(20px);
+        border-radius: 50px;
+        background: var(--gradient-2);
+        box-shadow: 0 25px 50px rgba(124, 58, 237, 0.4);
+      }
+      50% {
+        transform: rotate(0deg) scale(1.2) skew(0deg) translateZ(40px);
+        border-radius: 10px;
+        background: var(--gradient-3);
+        box-shadow: 0 35px 70px rgba(5, 150, 105, 0.5);
+      }
+      75% {
+        transform: rotate(-5deg) scale(1.1) skew(-2deg) translateZ(20px);
+        border-radius: 30px;
+        background: var(--gradient-1);
+        box-shadow: 0 25px 50px rgba(37, 99, 235, 0.4);
+      }
+    }
+
+    @keyframes liquidMorph {
+      0%, 100% {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%);
+        transform: rotateX(0deg) rotateY(0deg);
+      }
+      25% {
+        clip-path: polygon(0% 15%, 85% 0%, 100% 100%, 15% 100%, 0% 85%);
+        transform: rotateX(10deg) rotateY(5deg);
+      }
+      50% {
+        clip-path: polygon(15% 0%, 100% 15%, 85% 100%, 0% 85%, 0% 0%);
+        transform: rotateX(0deg) rotateY(10deg);
+      }
+      75% {
+        clip-path: polygon(0% 0%, 85% 15%, 100% 100%, 0% 100%, 0% 15%);
+        transform: rotateX(-10deg) rotateY(5deg);
+      }
+    }
+
+    @keyframes morphingBorder {
+      0%, 100% {
+        border-radius: 20px 40px 60px 20px;
+      }
+      33% {
+        border-radius: 60px 20px 40px 60px;
+      }
+      66% {
+        border-radius: 40px 60px 20px 40px;
+      }
+    }
+
+    @keyframes quantumFloat {
+      0%, 100% {
+        transform: translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        filter: hue-rotate(0deg);
+      }
+      25% {
+        transform: translateY(-15px) rotateX(5deg) rotateY(5deg) rotateZ(2deg);
+        filter: hue-rotate(90deg);
+      }
+      50% {
+        transform: translateY(-25px) rotateX(0deg) rotateY(10deg) rotateZ(0deg);
+        filter: hue-rotate(180deg);
+      }
+      75% {
+        transform: translateY(-10px) rotateX(-5deg) rotateY(5deg) rotateZ(-2deg);
+        filter: hue-rotate(270deg);
+      }
+    }
+
+    @keyframes waveAnimation {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes neonPulse {
+      0%, 100% {
+        box-shadow: 
+          0 0 5px rgba(6, 182, 212, 0.5),
+          0 0 10px rgba(6, 182, 212, 0.5),
+          0 0 15px rgba(6, 182, 212, 0.5),
+          0 0 20px rgba(6, 182, 212, 0.5);
+      }
+      50% {
+        box-shadow: 
+          0 0 10px rgba(6, 182, 212, 0.8),
+          0 0 20px rgba(6, 182, 212, 0.8),
+          0 0 30px rgba(6, 182, 212, 0.8),
+          0 0 40px rgba(6, 182, 212, 0.8);
+      }
+    }
+
+    @keyframes matrixRain {
+      0% {
+        transform: translateY(-100vh) rotateX(0deg) scale(0.5);
+        opacity: 0;
+        filter: blur(10px);
+      }
+      10% {
+        opacity: 1;
+        filter: blur(0px);
+        transform: scale(1);
+      }
+      90% {
+        opacity: 1;
+        filter: blur(0px);
+      }
+      100% {
+        transform: translateY(100vh) rotateX(360deg) scale(0.3);
+        opacity: 0;
+        filter: blur(5px);
+      }
+    }
+
+    @keyframes cyberpunkGlow {
+      0%, 100% {
+        text-shadow: 
+          0 0 5px rgba(6, 182, 212, 0.5),
+          0 0 10px rgba(6, 182, 212, 0.3),
+          0 0 15px rgba(6, 182, 212, 0.2);
+        transform: scale(1);
+      }
+      50% {
+        text-shadow: 
+          0 0 10px rgba(6, 182, 212, 0.8),
+          0 0 20px rgba(6, 182, 212, 0.6),
+          0 0 30px rgba(6, 182, 212, 0.4),
+          0 0 40px rgba(37, 99, 235, 0.3);
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes magneticPull {
+      0% {
+        transform: translateX(0) translateY(0) scale(1);
+      }
+      50% {
+        transform: translateX(5px) translateY(-3px) scale(1.02);
+      }
+      100% {
+        transform: translateX(0) translateY(0) scale(1);
+      }
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 80px 0;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 60px;
+      background: var(--gradient-3);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Skills Section */
+    .skill-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 30px;
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transform: translateY(50px);
+      opacity: 0;
+      box-shadow: 0 8px 32px rgba(37, 99, 235, 0.1);
+      position: relative;
+      overflow: hidden;
+      will-change: transform, opacity;
+    }
+    
+    /* Mobile-optimized animations */
+    .mobile-optimized {
+      transform: none !important;
+      animation: none !important;
+    }
+    
+    .mobile-optimized:hover {
+      transform: translateY(-5px) scale(1.02) !important;
+    }
+    
+    /* Touch-friendly styles */
+    @media (hover: none) and (pointer: coarse) {
+      .skill-card:hover,
+      .project-card:hover,
+      .contact-card:hover {
+        transform: translateY(-8px) scale(1.03);
+        animation: none;
+      }
+      
+      .btn-custom:hover {
+        transform: translateY(-3px) scale(1.02);
+        animation: none;
+      }
+      
+      .skill-card.flutter-morph {
+        animation: quantumFloat 8s ease-in-out infinite;
+      }
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(6, 182, 212, 0.1), transparent);
+      animation: waveAnimation 4s linear infinite;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .skill-card:hover::before {
+      opacity: 1;
+    }
+
+    .skill-card.flutter-morph {
+      animation: flutterMorph 6s ease-in-out infinite, morphingBorder 4s ease-in-out infinite;
+    }
+    
+    .skill-card.liquid-morph {
+      animation: liquidMorph 8s ease-in-out infinite;
+    }
+    
+    .skill-card.quantum-float {
+      animation: quantumFloat 10s ease-in-out infinite;
+    }
+    
+    /* Enhanced hero text animations */
+    .hero-content h1.cyberpunk {
+      animation: cyberpunkGlow 3s ease-in-out infinite;
+    }
+    
+    .magnetic-element {
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .magnetic-element:hover {
+      animation: magneticPull 0.6s ease-out;
+    }
+
+    .skill-card.animate {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-20px) rotateY(10deg) scale(1.05);
+      box-shadow: 
+        0 30px 80px rgba(37, 99, 235, 0.4), 
+        0 0 50px rgba(6, 182, 212, 0.3),
+        inset 0 0 30px rgba(6, 182, 212, 0.1);
+      border-color: var(--accent-color);
+      animation: neonPulse 2s ease-in-out infinite;
+    }
+
+    .skill-card:hover .skill-icon {
+      animation: flutterSpin 1s ease-in-out;
+    }
+
+    .skill-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      background: var(--gradient-1);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulse 3s ease-in-out infinite;
+      transition: all 0.3s ease;
+    }
+
+    .skill-icon:hover {
+      transform: scale(1.2) rotate(10deg);
+      filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.5));
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.3));
+      }
+      50% {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.6));
+      }
+    }
+
+    .skill-progress {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      height: 10px;
+      margin-top: 15px;
+      overflow: hidden;
+    }
+
+    .skill-progress-bar {
+      height: 100%;
+      background: var(--gradient-1);
+      border-radius: 50px;
+      width: 0;
+      transition: width 2s ease;
+    }
+
+    /* Experience Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background: var(--gradient-1);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 50px;
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.6s ease;
+    }
+
+    .timeline-item.animate {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -22px;
+      top: 0;
+      width: 15px;
+      height: 15px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      border: 3px solid var(--text-light);
+    }
+
+    .timeline-content {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
       border-radius: 15px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      padding: 25px;
+      margin-left: 20px;
+      box-shadow: 0 8px 32px rgba(37, 99, 235, 0.1);
     }
-    a {
-      color: #38bdf8;
-      text-decoration: none;
+
+    /* Project Cards */
+    .project-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+      transform: scale(0.9);
+      opacity: 0;
+      box-shadow: 0 8px 32px rgba(37, 99, 235, 0.1);
     }
-    a:hover {
-      text-decoration: underline;
+
+    .project-card.animate {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .project-card:hover {
+      transform: perspective(1000px) rotateX(10deg) rotateY(10deg) scale(1.05);
+      box-shadow: 
+        0 40px 80px rgba(37, 99, 235, 0.4), 
+        0 0 50px rgba(6, 182, 212, 0.3),
+        inset 0 0 20px rgba(6, 182, 212, 0.1);
+      border-color: var(--accent-color);
+      animation: projectFloat 2s ease-in-out infinite;
+    }
+
+    @keyframes projectFloat {
+      0%, 100% { 
+        transform: perspective(1000px) rotateX(10deg) rotateY(10deg) scale(1.05) translateZ(0px);
+      }
+      50% { 
+        transform: perspective(1000px) rotateX(10deg) rotateY(10deg) scale(1.05) translateZ(20px);
+      }
+    }
+
+    .project-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent 30%, rgba(6, 182, 212, 0.1) 50%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .project-card:hover::after {
+      opacity: 1;
+      animation: scanLine 1s ease-in-out;
+    }
+
+    @keyframes scanLine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    @keyframes projectShake {
+      0%, 100% { transform: scale(1.05) rotateY(5deg) translateX(0); }
+      25% { transform: scale(1.05) rotateY(5deg) translateX(-2px); }
+      75% { transform: scale(1.05) rotateY(5deg) translateX(2px); }
+    }
+
+    /* App Store Badges Animation */
+    .store-badge {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .store-badge::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: all 0.6s ease;
+    }
+
+    .store-badge:hover::before {
+      left: 100%;
+    }
+
+    .store-badge:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .tech-tag {
+      background: var(--gradient-1);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .tech-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+    }
+
+    /* Contact Section */
+    .contact-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 32px rgba(37, 99, 235, 0.1);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(37, 99, 235, 0.25), 0 0 20px rgba(6, 182, 212, 0.15);
+      border-color: var(--accent-color);
+    }
+
+    .contact-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      background: var(--gradient-1);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.3));
+    }
+
+    /* Animations */
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Loading Bar Animation */
+    .loading-bar {
+      width: 100%;
+      height: 3px;
+      background: rgba(37, 99, 235, 0.2);
+      border-radius: 3px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+
+    .loading-progress {
+      height: 100%;
+      background: var(--gradient-1);
+      border-radius: 3px;
+      animation: loadingProgress 3s ease-in-out infinite;
+    }
+
+    @keyframes loadingProgress {
+      0% { width: 0%; }
+      50% { width: 70%; }
+      100% { width: 100%; }
+    }
+
+    /* Flutter Logo Animation */
+    .flutter-logo {
+      animation: flutterSpin 8s linear infinite;
+    }
+
+    @keyframes flutterSpin {
+      0% { transform: rotate(0deg) scale(1); }
+      25% { transform: rotate(90deg) scale(1.1); }
+      50% { transform: rotate(180deg) scale(1); }
+      75% { transform: rotate(270deg) scale(1.1); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+
+    /* App Development Icons */
+    .dev-icons {
+      position: absolute;
+      top: 20%;
+      right: 10%;
+      opacity: 0.1;
+      animation: devIconsFloat 10s ease-in-out infinite;
+    }
+
+    @keyframes devIconsFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(10deg); }
+    }
+
+    /* Matrix Code Rain */
+    .matrix-code {
+      position: absolute;
+      font-family: 'Courier New', monospace;
+      color: rgba(6, 182, 212, 0.6);
+      font-size: 14px;
+      animation: matrixRain 8s linear infinite;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    /* Flutter Widget Tree Animation */
+    .widget-tree {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.03;
+    }
+
+    .widget-node {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      border-radius: 3px;
+      animation: widgetPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes widgetPulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+    }
+
+    /* Advanced Responsive Design */
+    
+    /* Fluid Typography */
+    .hero-content h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+    }
+    
+    .hero-content h2 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+    }
+    
+    .typing-text {
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+    }
+    
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+    
+    .hero-summary {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+    
+    /* Tablet Styles */
+    @media (max-width: 1024px) {
+      .skill-card, .project-card {
+        transform: none;
+        transition: all 0.3s ease;
+      }
+      
+      .skill-card:hover, .project-card:hover {
+        transform: translateY(-10px) scale(1.02);
+      }
+      
+      .timeline {
+        padding-left: 20px;
+      }
+      
+      .timeline-content {
+        margin-left: 15px;
+      }
+      
+      .particles {
+        opacity: 0.3;
+      }
+    }
+    
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 120px 0 80px;
+        min-height: 80vh;
+      }
+      
+      .section {
+        padding: 60px 0;
+      }
+      
+      .skill-card, .project-card, .contact-card {
+        margin-bottom: 20px;
+        padding: 25px;
+        transform: none;
+      }
+      
+      .skill-card:hover, .project-card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+      }
+      
+      .btn-custom {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+        margin: 8px;
+      }
+      
+      .timeline {
+        padding-left: 15px;
+      }
+      
+      .timeline::before {
+        left: 7px;
+      }
+      
+      .timeline-item::before {
+        left: -15px;
+        width: 12px;
+        height: 12px;
+      }
+      
+      .timeline-content {
+        margin-left: 10px;
+        padding: 20px;
+      }
+      
+      .navbar-nav {
+        background: rgba(15, 23, 42, 0.98);
+        border-radius: 10px;
+        margin-top: 10px;
+        padding: 15px;
+      }
+      
+      .dev-icons, .widget-tree {
+        display: none;
+      }
+      
+      .particles {
+        opacity: 0.2;
+      }
+      
+      .matrix-container {
+        display: none;
+      }
+    }
+    
+    /* Small Mobile Styles */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 15px;
+      }
+      
+      .hero-content {
+        padding: 0 10px;
+      }
+      
+      .skill-card, .project-card, .contact-card {
+        padding: 20px;
+      }
+      
+      .btn-custom {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+      }
+      
+      .cta-buttons {
+        max-width: 300px;
+        margin: 0 auto;
+      }
+      
+      .project-tech {
+        justify-content: center;
+      }
+      
+      .tech-tag {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+      }
+      
+      .navbar-brand {
+        font-size: 1.2rem;
+      }
+      
+      .contact-icon {
+        font-size: 2.5rem;
+      }
+      
+      .skill-icon {
+        font-size: 2.5rem;
+      }
+    }
+    
+    /* Ultra-wide screens */
+    @media (min-width: 1400px) {
+      .container {
+        max-width: 1320px;
+      }
+      
+      .hero-content h1 {
+        font-size: 4rem;
+      }
+      
+      .hero-content h2 {
+        font-size: 3rem;
+      }
+    }
+    
+    /* Landscape mobile */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .hero-section {
+        min-height: 100vh;
+        padding-top: 100px;
+      }
+      
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-content h2 {
+        font-size: 2rem;
+      }
+      
+      .hero-summary {
+        font-size: 1rem;
+      }
+    }
+
+    /* Advanced Particles Background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: particleFloat 20s infinite linear;
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+    }
+    
+    .particle.glow {
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.4) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(1px);
+    }
+    
+    .particle.geometric {
+      background: linear-gradient(45deg, rgba(37, 99, 235, 0.3), rgba(6, 182, 212, 0.3));
+      border-radius: 0;
+      animation: particleFloat 25s infinite linear, geometricSpin 8s infinite ease-in-out;
+    }
+    
+    /* Parallax Layers */
+    .parallax-layer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      will-change: transform;
+    }
+    
+    .parallax-bg-1 {
+      background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+      animation: parallaxFloat1 20s ease-in-out infinite;
+    }
+    
+    .parallax-bg-2 {
+      background: radial-gradient(ellipse at center, rgba(6, 182, 212, 0.08) 0%, transparent 60%);
+      animation: parallaxFloat2 25s ease-in-out infinite;
+    }
+    
+    @keyframes parallaxFloat1 {
+      0%, 100% { transform: translateX(-20px) translateY(-10px) scale(1); }
+      50% { transform: translateX(20px) translateY(10px) scale(1.1); }
+    }
+    
+    @keyframes parallaxFloat2 {
+      0%, 100% { transform: translateX(15px) translateY(8px) scale(1.05); }
+      50% { transform: translateX(-15px) translateY(-8px) scale(0.95); }
+    }
+    
+    @keyframes geometricSpin {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.2); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+
+    /* Mobile App Icons Animation */
+    .app-icon {
+      position: absolute;
+      font-size: 2rem;
+      color: rgba(6, 182, 212, 0.3);
+      animation: appFloat 15s infinite linear;
+      pointer-events: none;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes appFloat {
+      0% {
+        transform: translateY(100vh) rotate(0deg) scale(0.5);
+        opacity: 0;
+        filter: blur(5px) hue-rotate(0deg);
+      }
+      15% {
+        opacity: 0.6;
+        transform: scale(1);
+        filter: blur(0px) hue-rotate(90deg);
+      }
+      50% {
+        filter: hue-rotate(180deg);
+      }
+      85% {
+        opacity: 0.6;
+        filter: blur(0px) hue-rotate(270deg);
+      }
+      100% {
+        transform: translateY(-100px) rotate(180deg) scale(0.8);
+        opacity: 0;
+        filter: blur(3px) hue-rotate(360deg);
+      }
+    }
+    
+    /* Interactive Cursor Effects */
+    .cursor-trail {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.6), transparent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: difference;
+      animation: cursorPulse 1s ease-in-out infinite;
+    }
+    
+    @keyframes cursorPulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.5); opacity: 0.3; }
+    }
+    
+    /* Advanced Glow Effects */
+    .dynamic-glow {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .dynamic-glow::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        rgba(6, 182, 212, 0.1) 45deg,
+        rgba(37, 99, 235, 0.1) 90deg,
+        rgba(124, 58, 237, 0.1) 135deg,
+        rgba(6, 182, 212, 0.1) 180deg,
+        transparent 225deg,
+        rgba(37, 99, 235, 0.1) 270deg,
+        rgba(6, 182, 212, 0.1) 315deg,
+        transparent 360deg
+      );
+      animation: rotatingGlow 8s linear infinite;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .dynamic-glow:hover::before {
+      opacity: 1;
+    }
+    
+    @keyframes rotatingGlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Performance Optimizations */
+    * {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    
+    .gpu-accelerated {
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    
+    /* Scroll-triggered Animations */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .fade-in-up.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .fade-in-left.animate {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .fade-in-right.animate {
+      opacity: 1;
+      transform: translateX(0);
     }
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">rajesh-s</a>
+  <!-- Cursor Trail -->
+  <div class="cursor-trail" id="cursorTrail"></div>
+  <!-- Enhanced Particles Background -->
+  <div class="particles" id="particles">
+    <div class="parallax-layer parallax-bg-1"></div>
+    <div class="parallax-layer parallax-bg-2"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#home">Rajesh.S</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#hello">_hello</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about-me">_about-me</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">_projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact-me">_contact-me</a></li>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <div class="container mt-5">
-    <section id="hello" class="text-center">
-      <h1>Hi all. I am</h1>
-      <h1 class="display-4">Rajesh S</h1>
-      <h2 class="highlight">> APP-developer</h2>
-      <p>// my number</p>
-      <a href="+91 8248183828" class="contact-number">+91 8248183828</a></span>;</p>
-      <p>// my e-mail</p>
-      <p class="contact-info">const email = <span class="highlight">"rajeshsiva1404@gmail.com"</span>;</p>
-    </section>
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <!-- Floating App Development Icons -->
+      <div class="dev-icons">
+        <i class="fab fa-flutter flutter-logo" style="font-size: 4rem; color: rgba(6, 182, 212, 0.3);"></i>
+        <div class="widget-tree" id="widgetTree"></div>
+      </div>
+      
+      <!-- Matrix Code Rain -->
+      <div class="matrix-container" id="matrixContainer"></div>
+      
+      <div class="hero-content">
+        <h1 class="cyberpunk magnetic-element">Hi, I'm <span class="floating holographic-text">Rajesh S</span></h1>
+        <h2 id="typing-text" class="code-animation holographic-text magnetic-element">Flutter & App Developer</h2>
+        <div class="typing-text magnetic-element">
+          <i class="fas fa-mobile-alt mobile-demo"></i> <span class="holographic-text">Building Cross-Platform Mobile Apps</span>
+        </div>
+        
+        <!-- Loading Animation -->
+        <div class="loading-bar">
+          <div class="loading-progress"></div>
+        </div>
+        <div class="hero-summary">
+          <p class="mb-3"><em>"Building the future, one app at a time 📱✨"</em></p>
+          Flutter & Software Developer with <strong>1 year of experience</strong> in building and deploying cross-platform mobile apps (Android & iOS). 
+          Skilled in <strong>Flutter, Dart, Firebase, REST API, PHP, MySQL, Git</strong>. 
+          Proven track record of publishing apps on <strong>Play Store & App Store</strong> and contributing to ERP-based solutions.
+          <p class="mt-3"><i class="fas fa-rocket"></i> <strong>Ready to create amazing mobile experiences!</strong></p>
+        </div>
+        <div class="cta-buttons">
+          <a href="#projects" class="btn btn-custom btn-primary-custom">
+            <i class="fas fa-rocket"></i> View Projects
+          </a>
+          <a href="#contact" class="btn btn-custom btn-outline-custom">
+            <i class="fas fa-envelope"></i> Get In Touch
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="about-me" class="mt-5">
-      <h2>About Me</h2>
-      <p>Seeking opportunities to apply my technical skills, problem-solving abilities, and passion for innovation in a dynamic and collaborative environment. Eager to contribute to real-world projects and gain practical experience in APP development and software developer.</p>
-    </section>
-
-    <section id="projects" class="mt-5">
-      <h2>Projects</h2>
-      <div class="row g-4">
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="row">
         <div class="col-md-4">
-          <div class="card p-3">
-            <h5 class="highlight">Virtual Mouse</h5>
-            <p>Developed a virtual mouse system using hand gesture recognition with OpenCV and Python.</p>
+          <div class="skill-card flutter-morph dynamic-glow fade-in-up gpu-accelerated">
+            <div class="skill-icon magnetic-element">
+              <i class="fab fa-flutter"></i>
+            </div>
+            <h4><i class="fas fa-mobile-alt"></i> <span class="holographic-text">Mobile Development</span></h4>
+            <p>Flutter, Dart, Firebase (Auth, Firestore, Storage), REST API, Provider, Bloc, Push Notifications</p>
+            <div class="skill-progress">
+              <div class="skill-progress-bar" data-width="90%"></div>
+            </div>
+            <small>90% Proficiency</small>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card p-3">
-            <h5 class="highlight">Face Detection</h5>
-            <p>Created a face detection application using OpenCV for real-time recognition via webcam.</p>
+          <div class="skill-card liquid-morph dynamic-glow fade-in-up gpu-accelerated">
+            <div class="skill-icon magnetic-element">
+              <i class="fas fa-server"></i>
+            </div>
+            <h4>Backend Development</h4>
+            <p>PHP, MySQL, API development, JWT Auth, File Uploads, Database Design</p>
+            <div class="skill-progress">
+              <div class="skill-progress-bar" data-width="85%"></div>
+            </div>
+            <small>85% Proficiency</small>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card p-3">
-            <h5 class="highlight">Phishing Website Detection</h5>
-            <p>Designed a tool to detect phishing websites using URL analysis and HTML content features.</p>
+          <div class="skill-card quantum-float dynamic-glow fade-in-up gpu-accelerated">
+            <div class="skill-icon magnetic-element">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h4>Development Tools</h4>
+            <p>Git, GitHub, VS Code, Android Studio, Xcode, Postman, Figma</p>
+            <div class="skill-progress">
+              <div class="skill-progress-bar" data-width="88%"></div>
+            </div>
+            <small>88% Proficiency</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="skill-card flutter-morph dynamic-glow fade-in-left gpu-accelerated">
+            <div class="skill-icon magnetic-element">
+              <i class="fas fa-cloud-upload-alt"></i>
+            </div>
+            <h4>Deployment & CI/CD</h4>
+            <p>Play Store, App Store, CI/CD basics, Version Control</p>
+            <div class="skill-progress">
+              <div class="skill-progress-bar" data-width="80%"></div>
+            </div>
+            <small>80% Proficiency</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="skill-card liquid-morph dynamic-glow fade-in-left gpu-accelerated">
+            <div class="skill-icon magnetic-element">
+              <i class="fab fa-html5"></i>
+            </div>
+            <h4>Web Technologies</h4>
+            <p>HTML, CSS, JavaScript, Bootstrap, jQuery, Responsive Design</p>
+            <div class="skill-progress">
+              <div class="skill-progress-bar" data-width="82%"></div>
+            </div>
+            <small>82% Proficiency</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="skill-card quantum-float dynamic-glow fade-in-right gpu-accelerated">
+            <div class="skill-icon magnetic-element">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h4>Problem Solving</h4>
+            <p>Algorithm Design, Debugging, Performance Optimization, Code Review</p>
+            <div class="skill-progress">
+              <div class="skill-progress-bar" data-width="87%"></div>
+            </div>
+            <small>87% Proficiency</small>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="contact-me" class="mt-5">
-      <h2>Contact Me</h2>
-      <p>const gMail = <a href="https://rajeshsiva@gmail.com">"rajeshsiva1404@gmail.com"</a>;</p>
-      <p>const githubLink = <a href="https://github.com/rajesh">"https://github.com/rajesh"</a>;</p>
-      <p>const linkedInPage = <a href="www.linkedin.com/in/rajesh-s-5345a8271">"www.linkedin.com/in/rajesh-s-5345a8271"</a>;</p>
-    </section>
-  </div>
+  <!-- Experience Section -->
+  <section id="experience" class="section">
+    <div class="container">
+      <h2 class="section-title">Work Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h4><i class="fas fa-mobile-alt"></i> Flutter Developer</h4>
+            <h5 class="text-info">Cloud Zoo India Software Company, Tiruppur</h5>
+            <p class="text-muted">Jan 2024 – Present</p>
+            <ul class="mt-3">
+              <li>Built and published ERP mobile apps using Flutter, Dart, and Firebase for Android & iOS</li>
+              <li>Implemented REST API integration (PHP backend, MySQL DB), JWT authentication, and file/image uploads</li>
+              <li>Used Provider & Bloc for state management and FCM for push notifications</li>
+              <li>Automated builds and releases with Git, GitHub, Android Studio, Xcode</li>
+              <li>Optimized UI/UX with custom widgets, responsive layouts, and performance tuning</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h4><i class="fas fa-code"></i> Front-End Developer Intern</h4>
+            <h5 class="text-info">QuantumCode Tech, Coimbatore</h5>
+            <p class="text-muted">Nov 2023 – Jan 2024</p>
+            <ul class="mt-3">
+              <li>Developed responsive web UIs using HTML, CSS, Bootstrap, and jQuery</li>
+              <li>Integrated REST APIs for dynamic content and user actions</li>
+              <li>Collaborated with designers and backend team for seamless delivery</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="project-card dynamic-glow fade-in-left gpu-accelerated">
+            <h4><i class="fas fa-clock magnetic-element"></i> Cloud TNA App</h4>
+            <p class="text-muted">2025</p>
+            <p>ERP Time & Action tracking app deployed on <strong>Play Store & App Store</strong>. 
+            Complete attendance management system with real-time synchronization and offline capabilities.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Dart</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">REST API</span>
+              <span class="tech-tag">PHP</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">Provider</span>
+              <span class="tech-tag">Git</span>
+            </div>
+            <div class="mt-3">
+              <a href="#" class="btn btn-custom btn-primary-custom btn-sm store-badge">
+                <i class="fab fa-google-play"></i> Play Store
+              </a>
+              <a href="#" class="btn btn-custom btn-outline-custom btn-sm store-badge">
+                <i class="fab fa-app-store"></i> App Store
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="project-card dynamic-glow fade-in-right gpu-accelerated">
+            <h4><i class="fas fa-user-check magnetic-element"></i> Cloudzoo ERP Attendance App</h4>
+            <p class="text-muted">2025</p>
+            <p>Comprehensive attendance & leave tracking system with Flutter + Firebase backend. 
+            Features include biometric authentication, leave management, and real-time reporting.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">REST API</span>
+              <span class="tech-tag">Git</span>
+              <span class="tech-tag">State Management</span>
+            </div>
+            <div class="mt-3">
+              <a href="#" class="btn btn-custom btn-primary-custom btn-sm">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="#" class="btn btn-custom btn-outline-custom btn-sm">
+                <i class="fas fa-external-link-alt"></i> Demo
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="project-card dynamic-glow fade-in-left gpu-accelerated">
+            <h4><i class="fas fa-mouse-pointer magnetic-element"></i> Virtual Mouse</h4>
+            <p class="text-muted">2024</p>
+            <p>Hand gesture recognition system using Python & OpenCV for contactless computer control. 
+            Implements computer vision techniques for accurate gesture detection.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">Computer Vision</span>
+              <span class="tech-tag">Machine Learning</span>
+            </div>
+            <div class="mt-3">
+              <a href="#" class="btn btn-custom btn-primary-custom btn-sm magnetic-element">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="project-card dynamic-glow fade-in-right gpu-accelerated">
+            <h4><i class="fas fa-shield-alt magnetic-element"></i> Phishing Detector</h4>
+            <p class="text-muted">2024</p>
+            <p>URL-based phishing detection tool using machine learning algorithms. 
+            Analyzes website features and patterns to identify malicious websites.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Machine Learning</span>
+              <span class="tech-tag">Web Security</span>
+              <span class="tech-tag">Data Analysis</span>
+            </div>
+            <div class="mt-3">
+              <a href="#" class="btn btn-custom btn-primary-custom btn-sm magnetic-element">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="contact-card dynamic-glow fade-in-up gpu-accelerated">
+            <div class="contact-icon magnetic-element">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h4>B.E. Computer Science and Engineering</h4>
+            <p class="text-info">Jai Shriram Engineering College</p>
+            <p>2025 • CGPA: 8.1</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="contact-card dynamic-glow fade-in-up gpu-accelerated">
+            <div class="contact-icon magnetic-element">
+              <i class="fas fa-school"></i>
+            </div>
+            <h4>Higher Secondary (12th)</h4>
+            <p class="text-info">HSC Board</p>
+            <p>2021 • 80.5%</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="contact-card dynamic-glow fade-in-up gpu-accelerated">
+            <div class="contact-icon magnetic-element">
+              <i class="fas fa-book"></i>
+            </div>
+            <h4>Secondary (10th)</h4>
+            <p class="text-info">SSLC Board</p>
+            <p>2019 • 73.5%</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Let's Connect</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="contact-card dynamic-glow fade-in-left gpu-accelerated">
+            <div class="contact-icon magnetic-element">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h4>Email</h4>
+            <p><a href="mailto:rajeshsiva1404@gmail.com" class="magnetic-element">rajeshsiva1404@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="contact-card dynamic-glow fade-in-up gpu-accelerated">
+            <div class="contact-icon magnetic-element">
+              <i class="fas fa-phone"></i>
+            </div>
+            <h4>Phone</h4>
+            <p><a href="tel:+918248183828" class="magnetic-element">+91 8248183828</a></p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="contact-card dynamic-glow fade-in-right gpu-accelerated">
+            <div class="contact-icon magnetic-element">
+              <i class="fab fa-linkedin"></i>
+            </div>
+            <h4>LinkedIn</h4>
+            <p><a href="https://linkedin.com/in/rajesh-s-23a61b349" target="_blank" class="magnetic-element">rajesh-s-23a61b349</a></p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-5">
+        <div class="cta-buttons">
+          <a href="https://github.com/rajesh" class="btn btn-custom btn-outline-custom" target="_blank">
+            <i class="fab fa-github"></i> GitHub Profile
+          </a>
+          <a href="mailto:rajeshsiva1404@gmail.com" class="btn btn-custom btn-primary-custom">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-4">
+    <div class="container">
+      <p>&copy; 2025 Rajesh S. All rights reserved. Built with ❤️ using Flutter mindset.</p>
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Performance and Device Detection
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    // Advanced Typing Animation
+    const texts = [
+      "Flutter Developer", 
+      "Mobile App Developer", 
+      "Cross-Platform Expert", 
+      "Firebase Specialist",
+      "UI/UX Enthusiast",
+      "Full-Stack Developer",
+      "API Integration Expert"
+    ];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingElement = document.getElementById('typing-text');
+
+    function typeText() {
+      const currentText = texts[textIndex];
+      
+      if (isDeleting) {
+        typingElement.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingElement.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      // Add cursor effect
+      typingElement.style.borderRight = charIndex === currentText.length && !isDeleting ? 
+        '2px solid rgba(6, 182, 212, 0.8)' : '2px solid transparent';
+
+      if (!isDeleting && charIndex === currentText.length) {
+        setTimeout(() => isDeleting = true, 2500);
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % texts.length;
+      }
+
+      setTimeout(typeText, isDeleting ? 30 : 80);
+    }
+
+    // Enhanced Cursor Trail
+    let cursorTrail = [];
+    const maxTrailLength = 10;
+
+    function createCursorTrail() {
+      if (isMobile || isTouch) return;
+      
+      const trail = document.getElementById('cursorTrail');
+      
+      document.addEventListener('mousemove', (e) => {
+        // Update main cursor trail
+        trail.style.left = e.clientX - 10 + 'px';
+        trail.style.top = e.clientY - 10 + 'px';
+        
+        // Create trailing particles
+        const particle = document.createElement('div');
+        particle.className = 'cursor-trail';
+        particle.style.left = e.clientX - 5 + 'px';
+        particle.style.top = e.clientY - 5 + 'px';
+        particle.style.width = '10px';
+        particle.style.height = '10px';
+        particle.style.opacity = '0.3';
+        
+        document.body.appendChild(particle);
+        
+        setTimeout(() => {
+          if (particle.parentNode) {
+            particle.parentNode.removeChild(particle);
+          }
+        }, 500);
+      });
+    }
+
+    // Magnetic Elements Effect
+    function addMagneticEffect() {
+      if (isMobile) return;
+      
+      const magneticElements = document.querySelectorAll('.magnetic-element');
+      
+      magneticElements.forEach(element => {
+        element.addEventListener('mousemove', (e) => {
+          const rect = element.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          
+          const deltaX = (e.clientX - centerX) * 0.15;
+          const deltaY = (e.clientY - centerY) * 0.15;
+          
+          element.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(1.05)`;
+        });
+        
+        element.addEventListener('mouseleave', () => {
+          element.style.transform = 'translate(0px, 0px) scale(1)';
+        });
+      });
+    }
+
+    // Enhanced Scroll Animations with Intersection Observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const fadeInObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          
+          // Animate progress bars
+          const progressBar = entry.target.querySelector('.skill-progress-bar');
+          if (progressBar && !progressBar.style.width) {
+            const width = progressBar.getAttribute('data-width');
+            setTimeout(() => {
+              progressBar.style.width = width;
+            }, 300);
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Parallax Scrolling Effect
+    function updateParallax() {
+      const scrolled = window.pageYOffset;
+      const parallaxElements = document.querySelectorAll('.parallax-layer');
+      
+      parallaxElements.forEach((element, index) => {
+        const speed = (index + 1) * 0.5;
+        element.style.transform = `translate3d(0, ${scrolled * speed}px, 0)`;
+      });
+    }
+
+    // Enhanced Particle System
+    function createAdvancedParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = isMobile ? 15 : 40;
+      const geometricShapes = ['circle', 'triangle', 'square'];
+      
+      const appIcons = [
+        'fab fa-flutter', 'fab fa-android', 'fab fa-apple', 'fas fa-mobile-alt',
+        'fab fa-firebase', 'fas fa-code', 'fas fa-database', 'fab fa-github',
+        'fas fa-cloud', 'fas fa-cog', 'fas fa-rocket', 'fas fa-bolt',
+        'fab fa-js-square', 'fab fa-css3-alt', 'fab fa-html5'
+      ];
+
+      // Create glowing particles
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        const isGlow = Math.random() > 0.7;
+        const isGeometric = Math.random() > 0.8;
+        
+        if (isGlow) {
+          particle.className = 'particle glow';
+        } else if (isGeometric) {
+          particle.className = 'particle geometric';
+        } else {
+          particle.className = 'particle';
+        }
+        
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.width = particle.style.height = Math.random() * 8 + 3 + 'px';
+        particle.style.animationDuration = (Math.random() * 25 + 15) + 's';
+        particle.style.animationDelay = Math.random() * 25 + 's';
+        
+        if (isGeometric) {
+          particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
+        }
+        
+        particlesContainer.appendChild(particle);
+      }
+
+      // Create app icon particles
+      const iconCount = isMobile ? 4 : 10;
+      for (let i = 0; i < iconCount; i++) {
+        const appIcon = document.createElement('i');
+        appIcon.className = 'app-icon ' + appIcons[Math.floor(Math.random() * appIcons.length)];
+        appIcon.style.left = Math.random() * 100 + '%';
+        appIcon.style.animationDuration = (Math.random() * 18 + 12) + 's';
+        appIcon.style.animationDelay = Math.random() * 18 + 's';
+        particlesContainer.appendChild(appIcon);
+      }
+    }
+
+    // Enhanced Matrix Rain with Performance Optimization
+    function createEnhancedMatrixRain() {
+      if (isMobile) return; // Skip on mobile for performance
+      
+      const matrixContainer = document.getElementById('matrixContainer');
+      if (!matrixContainer) return;
+      
+      const codeSnippets = [
+        'class MyApp extends StatelessWidget {',
+        'Widget build(BuildContext context) {',
+        'return MaterialApp(',
+        'home: Scaffold(',
+        'setState(() {',
+        'Navigator.push(context,',
+        'async/await',
+        'FutureBuilder<String>(',
+        'StreamBuilder<int>(',
+        '@override',
+        'void initState() {',
+        'super.dispose();',
+        'import \'package:flutter/material.dart\';',
+        'firebase_core: ^2.15.1',
+        'http: ^1.1.0',
+        'provider: ^6.0.5',
+        'StatefulWidget',
+        'AnimationController',
+        'Tween<double>',
+        'CurvedAnimation'
+      ];
+
+      let matrixInterval = setInterval(() => {
+        const existingCodes = document.querySelectorAll('.matrix-code');
+        if (existingCodes.length < 12) {
+          const code = document.createElement('div');
+          code.className = 'matrix-code';
+          code.textContent = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+          code.style.left = Math.random() * 100 + '%';
+          code.style.animationDelay = '0s';
+          code.style.animationDuration = (Math.random() * 6 + 4) + 's';
+          code.style.fontSize = (Math.random() * 4 + 12) + 'px';
+          matrixContainer.appendChild(code);
+          
+          setTimeout(() => {
+            if (code.parentNode) {
+              code.parentNode.removeChild(code);
+            }
+          }, 10000);
+        }
+      }, 1200);
+      
+      // Pause matrix rain when page is not visible
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          clearInterval(matrixInterval);
+        } else {
+          matrixInterval = setInterval(() => {
+            // Matrix rain logic here (same as above)
+          }, 1200);
+        }
+      });
+    }
+
+    // Advanced Card Interactions with 3D Effects
+    function addAdvanced3DInteractions() {
+      if (isMobile) return; // Simplified interactions for mobile
+      
+      const cards = document.querySelectorAll('.skill-card, .project-card, .contact-card');
+      
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const rotateX = (y - centerY) / 8;
+          const rotateY = (centerX - x) / 8;
+          
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05) translateZ(20px)`;
+          card.style.boxShadow = `
+            ${rotateY * 2}px ${rotateX * 2}px 50px rgba(37, 99, 235, 0.4),
+            0 0 30px rgba(6, 182, 212, 0.3)
+          `;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1) translateZ(0px)';
+          card.style.boxShadow = '0 8px 32px rgba(37, 99, 235, 0.1)';
+        });
+      });
+    }
+
+    // Mobile Optimization
+    function optimizeForMobile() {
+      if (isMobile) {
+        // Add mobile-optimized class to all animated elements
+        const animatedElements = document.querySelectorAll('.skill-card, .project-card, .contact-card');
+        animatedElements.forEach(element => {
+          element.classList.add('mobile-optimized');
+        });
+        
+        // Remove heavy animations on mobile
+        const heavyAnimations = document.querySelectorAll('.flutter-morph, .liquid-morph, .quantum-float');
+        heavyAnimations.forEach(element => {
+          element.style.animation = 'none';
+        });
+      }
+    }
+
+    // Enhanced Navbar Effects
+    function enhanceNavbar() {
+      const navbar = document.querySelector('.navbar');
+      let lastScrollY = window.scrollY;
+      
+      window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        // Enhanced navbar styling based on scroll
+        if (currentScrollY > 100) {
+          navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+          navbar.style.boxShadow = '0 8px 32px rgba(37, 99, 235, 0.2)';
+          navbar.style.backdropFilter = 'blur(20px)';
+        } else {
+          navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+          navbar.style.boxShadow = '0 4px 20px rgba(37, 99, 235, 0.1)';
+          navbar.style.backdropFilter = 'blur(10px)';
+        }
+        
+        // Hide/show navbar on scroll
+        if (currentScrollY > lastScrollY && currentScrollY > 200) {
+          navbar.style.transform = 'translateY(-100%)';
+        } else {
+          navbar.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollY = currentScrollY;
+        
+        // Update parallax
+        requestAnimationFrame(updateParallax);
+      });
+    }
+
+    // Initialize Everything
+    document.addEventListener('DOMContentLoaded', () => {
+      // Start typing animation
+      setTimeout(typeText, 2000);
+      
+      // Initialize observers and effects
+      const elementsToObserve = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .skill-card, .timeline-item, .project-card');
+      elementsToObserve.forEach(element => {
+        fadeInObserver.observe(element);
+      });
+      
+      // Initialize interactive features
+      createCursorTrail();
+      addMagneticEffect();
+      createAdvancedParticles();
+      createEnhancedMatrixRain();
+      addAdvanced3DInteractions();
+      optimizeForMobile();
+      enhanceNavbar();
+      
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    });
+
+    // Performance optimization: Pause animations when page is not visible
+    document.addEventListener('visibilitychange', () => {
+      const animatedElements = document.querySelectorAll('.skill-card, .project-card');
+      if (document.hidden) {
+        animatedElements.forEach(element => {
+          element.style.animationPlayState = 'paused';
+        });
+      } else {
+        animatedElements.forEach(element => {
+          element.style.animationPlayState = 'running';
+        });
+      }
+    });
+
+    // Add active nav highlight with smooth transitions
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+      
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').substring(1) === current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
